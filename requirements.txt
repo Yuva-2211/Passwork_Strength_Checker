@@ -1,0 +1,15 @@
+flask
+re
+random
+string
+
+#this the structure to store 
+password_strength_checker/
+│
+├── app.py
+│
+├── templates/
+│   └── index.html
+│
+└── static/
+    └── styles.css

@@ -1,0 +1,123 @@
+body {
+    background-color: #9DBEBB;
+    color: #000000;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.container {
+    background-color: #468189;
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.container:hover {
+    box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+}
+
+/* Dark Mode Styling */
+.dark-mode {
+    background-color: #121212;
+    color: white;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.toggle-mode {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.toggle-mode:hover {
+    background-color: #444;
+    transform: scale(1.1);
+}
+
+/* Password Input Field */
+.password-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#passwordField {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px 0;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+#passwordField:focus {
+    border: 1px solid #004d52;
+    box-shadow: 0 0 10px rgba(0, 77, 82, 0.5);
+}
+
+/* View Button */
+#viewButton {
+    margin-left: 5px;
+    padding: 10px;
+    background-color: #28666e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#viewButton:hover {
+    background-color: #004d52;
+    transform: scale(1.1);
+}
+
+/* Buttons */
+.buttons button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #28666e;
+    color: #FFF;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.buttons button:hover {
+    background-color: #004d52;
+    transform: scale(1.05);
+}
+
+/* Strength Meter */
+.strength-container {
+    width: 100%;
+    background: #ddd;
+    height: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#strengthMeter {
+    height: 10px;
+    width: 0%;
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out, background-color 0.3s ease;
+}

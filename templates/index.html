@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button class="toggle-mode" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
+    <div class="container">
+        <h1>Password Strength Checker</h1>
+        <form method="POST">
+            <div class="password-container">
+                <input type="password" name="password" placeholder="Enter your password" id="passwordField" value="{{ password }}" oninput="updateStrengthMeter()">
+                <button type="button" id="viewButton" onclick="togglePassword()">👁 View</button>
+            </div>
+            
+            <!-- Strength Meter -->
+            <div class="strength-container">
+                <div id="strengthMeter"></div>
+            </div>
+            <p id="strengthText"></p>
+
+            <div class="password-tips">
+                <h3>Password Guidelines:</h3>
+                <ul>
+                    <li id="length">✔ At least 8 characters</li>
+                    <li id="uppercase">✔ Includes uppercase letters</li>
+                    <li id="numbers">✔ Includes numbers</li>
+                    <li id="special">✔ Includes special characters (!@#$%^&*)</li>
+                </ul>
+            </div>
+
+            <div class="buttons">
+                <button type="submit" name="check">Check Strength</button>
+                <button type="submit" name="generate" value="true">Generate Strong Password</button>
+            </div>
+        </form>
+
+        {% if result %}
+            <div class="result">
+                <p>{{ result }}</p>
+                {% if suggestions %}
+                    <p><strong>Suggestions:</strong> {{ suggestions }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function updateStrengthMeter() {
+            let password = document.getElementById("passwordField").value;
+            let strengthMeter = document.getElementById("strengthMeter");
+            let strengthText = document.getElementById("strengthText");
+
+            let strength = 0;
+            if (password.length >= 8) strength += 1;
+            if (password.match(/[A-Z]/)) strength += 1;
+            if (password.match(/[0-9]/)) strength += 1;
+            if (password.match(/[^a-zA-Z0-9]/)) strength += 1;
+
+            let strengthPercent = (strength / 4) * 100;
+            strengthMeter.style.width = strengthPercent + "%";
+
+            if (strength === 0) {
+                strengthMeter.style.background = "red";
+                strengthText.innerText = "Weak";
+            } else if (strength === 1) {
+                strengthMeter.style.background = "orange";
+                strengthText.innerText = "Moderate";
+            } else if (strength === 2) {
+                strengthMeter.style.background = "yellow";
+                strengthText.innerText = "Good";
+            } else if (strength === 3) {
+                strengthMeter.style.background = "lightgreen";
+                strengthText.innerText = "Strong";
+            } else {
+                strengthMeter.style.background = "green";
+                strengthText.innerText = "Very Strong!";
+            }
+        }
+
+        function togglePassword() {
+            let passwordField = document.getElementById("passwordField");
+            let viewButton = document.getElementById("viewButton");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                viewButton.innerText = "🙈 Hide";
+            } else {
+                passwordField.type = "password";
+                viewButton.innerText = "👁 View";
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+</body>
+</html>
