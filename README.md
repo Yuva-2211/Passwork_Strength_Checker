@@ -23,8 +23,8 @@ A **secure, interactive, and user-friendly** tool to evaluate **password strengt
 
 ### 🔹 **Step 1: Download or Clone the Repository**  
 ```sh
-git clone https://github.com/your-repo/password-strength-checker.git
-cd password-strength-checker
+git clone https://github.com/Yuva-2211/Passwork_Strength_Checker.git
+cd Passwork_Strength_Checker
 ```
 
 ### 🔹 **Step 2: Structure Your Files Correctly**  
